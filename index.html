@@ -360,14 +360,44 @@
       <img alt="Santren logo" class="w-8 h-8" src="logo santren.png" />
       <span class="text-white text-lg font-semibold">Santren.net</span>
     </div>
+    <!-- Desktop Menu -->
     <ul class="hidden md:flex items-center space-x-8 text-base text-white font-medium">
       <li><a href="#fitur" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Fitur</a></li>
       <li><a href="#tentang" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Tentang Kami</a></li>
       <li><a href="#mitra" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Mitra</a></li>
-      <li><a href="https://demo.santren.net/login" target="_blank" class="bg-white text-[#0B6E2F] px-6 py-2 rounded-lg font-semibold hover:bg-[#E6F4EA] transition duration-300">Demo</a></li>
+      <li><a href="https://demo.santren.net" target="_blank" class="cta-btn pulse-glow bg-[#0B6E2F] text-white px-6 py-2 rounded-lg font-bold shadow-md hover:bg-[#22c55e] hover:text-white transition duration-300">Demo</a></li>
     </ul>
-    <button class="cta-btn pulse-glow text-base font-semibold rounded-lg px-6 py-2 shadow-md">Daftar</button>
+    <!-- Mobile Hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
   </nav>
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-[#0B6E2F] bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+    <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl focus:outline-none"><i class="fas fa-times"></i></button>
+    <ul class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-semibold">
+      <li><a href="#fitur" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Fitur</a></li>
+      <li><a href="#tentang" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Tentang Kami</a></li>
+      <li><a href="#mitra" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Mitra</a></li>
+      <li><a href="https://demo.santren.net" target="_blank" class="cta-btn pulse-glow bg-[#0B6E2F] text-white px-8 py-3 rounded-lg font-bold shadow-md hover:bg-[#22c55e] hover:text-white transition duration-300" onclick="closeMobileMenu()">Demo</a></li>
+    </ul>
+  </div>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+    // Close menu on link click (handled via onclick in <a>)
+  </script>
 
   <!-- Hero Section -->
   <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white rounded-3xl shadow-xl">
