@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santren.net</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <!-- Swiper.js CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Memberikan ruang untuk navbar sticky */
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f8fa;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .diagonal-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+
+  /* Animasi Hero Section */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, #0B6E2F, #22c55e, #0B6E2F);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .delay-800 {
+    animation-delay: 0.8s;
+  }
+
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(34, 197, 94, 0.08), 0 1.5px 6px 0 rgba(34, 197, 94, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.16), 0 3px 12px 0 rgba(34, 197, 94, 0.08);
+  }
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0B6E2F;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+  }
+  .section-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+  }
+  .cta-btn {
+    background: linear-gradient(90deg, #0B6E2F 0%, #22c55e 100%);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 4px 24px 0 rgba(34, 197, 94, 0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover {
+    background: linear-gradient(90deg, #22c55e 0%, #0B6E2F 100%);
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.18);
+  }
+  .img-shadow {
+    box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.18);
+    border-radius: 1.5rem;
+  }
+  .mitra-img {
+    border-radius: 9999px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px 0 rgba(34, 197, 94, 0.12);
+    margin-bottom: 1rem;
+  }
+  .mitra-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(34, 197, 94, 0.08);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .mitra-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.16);
+  }
+  .footer {
+    background: #0B6E2F;
+    color: #fff;
+    padding: 3rem 0 1.5rem 0;
+  }
+  .footer a { color: #fff; opacity: 0.85; transition: opacity 0.2s; }
+  .footer a:hover { opacity: 1; text-decoration: underline; }
+  .footer .footer-title { font-size: 1rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; }
+  .footer .footer-social i { font-size: 1.5rem; margin-right: 1rem; }
+  /* Animasi fade-in/slide-in */
+  .animate-fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s ease-out forwards; }
+  .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+  .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+  .animate-fade-in-up.delay-600 { animation-delay: 0.6s; }
+  .animate-fade-in-up.delay-800 { animation-delay: 0.8s; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    color: #0B6E2F; /* fallback agar teks tetap muncul */
+    background: linear-gradient(90deg, #0B6E2F 0%, #22c55e 50%, #0B6E2F 100%);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* Hanya aktifkan fill-color transparent jika browser support */
+    /* -webkit-text-fill-color: transparent; */
+    animation: shimmer 2.5s linear infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    50% { box-shadow: 0 0 16px 8px rgba(34,197,94,0.25); }
+  }
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+  .cta-btn, .btn-anim {
+    background: linear-gradient(90deg, #0B6E2F 0%, #22c55e 100%);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 4px 24px 0 rgba(34, 197, 94, 0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    animation: pulse-glow 2.5s infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-btn:hover, .btn-anim:hover {
+    background: linear-gradient(90deg, #22c55e 0%, #0B6E2F 100%);
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.25);
+  }
+  @keyframes bounce-custom {
+    0%, 100% { transform: scale(1); }
+    20% { transform: scale(1.08); }
+    40% { transform: scale(0.97); }
+    60% { transform: scale(1.04); }
+    80% { transform: scale(0.98); }
+  }
+  .animate-bounce-custom {
+    animation: bounce-custom 2.2s infinite;
+  }
+  @keyframes text-glow {
+    0%, 100% { text-shadow: 0 0 0px #22c55e; }
+    50% { text-shadow: 0 0 16px #22c55e, 0 0 32px #0B6E2F; }
+  }
+  .text-glow {
+    animation: text-glow 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: scale(1);}
+    20% { transform: scale(1.08);}
+    40% { transform: scale(0.97);}
+    60% { transform: scale(1.04);}
+    80% { transform: scale(0.98);}
+  }
+  .animate-bounce {
+    animation: bounce 1.8s infinite;
+  }
+  @keyframes scale-up {
+    0% { transform: scale(0.7); opacity: 0; }
+    60% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .scale-up {
+    animation: scale-up 0.8s cubic-bezier(.23,1.12,.67,.99) both;
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer-glow {
+    color: #0B6E2F;
+    background: linear-gradient(90deg, #0B6E2F 0%, #22c55e 50%, #0B6E2F 100%);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shimmer 2.5s linear infinite;
+    text-shadow: 0 0 12px #22c55e99, 0 0 24px #0B6E2F33;
+  }
+  .btn-shimmer-glow {
+    background: linear-gradient(90deg, #0B6E2F 0%, #22c55e 50%, #0B6E2F 100%);
+    background-size: 200% 100%;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 9999px;
+    box-shadow: 0 0 16px #22c55e99, 0 0 32px #0B6E2F33;
+    animation: shimmer 2.5s linear infinite;
+    transition: transform 0.15s cubic-bezier(.23,1.12,.67,.99), box-shadow 0.2s;
+  }
+  .btn-shimmer-glow:active {
+    transform: scale(1.08);
+    box-shadow: 0 0 32px #22c55e, 0 0 48px #0B6E2F66;
+  }
+  @keyframes text-glow-pulse {
+    0%, 100% { text-shadow: 0 0 0px #22c55e; }
+    50% { text-shadow: 0 0 16px #22c55e, 0 0 32px #0B6E2F; }
+  }
+  .text-glow-pulse {
+    animation: text-glow-pulse 2s infinite;
+    color: #0B6E2F;
+    font-weight: bold;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.12);}
+  }
+  .pulse {
+    animation: pulse 1.2s infinite;
+  }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Navbar -->
+  <nav class="bg-[#0B6E2F] flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sticky top-0 z-50 shadow-lg">
+    <div class="flex items-center space-x-3">
+      <img alt="Santren logo" class="w-8 h-8" src="logo santren.png" />
+      <span class="text-white text-lg font-semibold">Santren.net</span>
+    </div>
+    <ul class="hidden md:flex items-center space-x-8 text-base text-white font-medium">
+      <li><a href="#fitur" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Fitur</a></li>
+      <li><a href="#tentang" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Tentang Kami</a></li>
+      <li><a href="#mitra" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Mitra</a></li>
+      <li><a href="https://demo.santren.net/login" target="_blank" class="bg-white text-[#0B6E2F] px-6 py-2 rounded-lg font-semibold hover:bg-[#E6F4EA] transition duration-300">Demo</a></li>
+    </ul>
+    <button class="cta-btn pulse-glow text-base font-semibold rounded-lg px-6 py-2 shadow-md">Daftar</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white rounded-3xl shadow-xl">
+    <section class="flex flex-col md:flex-row items-center md:items-start gap-12 max-w-5xl mx-auto relative z-10">
+      
+      <!-- Konten Kiri -->
+      <div class="flex-1 text-left space-y-4">
+        <p class="text-gray-500 text-sm animate-fade-in-up delay-200">
+          Biaya normal:
+          <span class="line-through text-red-600 font-semibold">Rp. 5.000.000</span>
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#0B6E2F] text-glow-pulse">
+          Promo Web Pesantren - Juli 2025
+        </h2>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-[#0B6E2F] pulse">
+          Hanya Rp. 100.000
+        </h1>
+        <p class="text-lg text-gray-700 animate-fade-in-up delay-800">
+          Dapatkan website pesantren profesional hanya dengan biaya terjangkau. Gratis domain, hosting, dan desain awal.
+        </p>
+        <p class="text-sm text-gray-600 animate-fade-in-up delay-1000">
+          Berlaku untuk 10 pendaftar pertama bulan ini.
+        </p>
+        <a href="#fitur" class="btn-shimmer-glow inline-flex items-center px-6 py-3 text-sm font-semibold hover:opacity-90 transition">
+          Telusuri Fitur Santren.Net
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+  
+      <!-- Gambar dan Box Mitra -->
+      <div class="flex-1 flex flex-col items-center md:items-end space-y-4">
+        <img src="laptop.png" alt="Mockup Santren.net" class="rounded-xl shadow-md w-[300px] md:w-[360px] object-contain" />
+        
+        <a href="#mitra" class="btn-shimmer-glow w-full md:w-auto border border-[#0B6E2F] rounded-lg px-5 py-3 text-sm font-semibold flex items-center justify-between hover:opacity-90 transition">
+          <span>Hubungi Mitra Sekarang</span>
+          <i class="fas fa-phone ml-3"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  </script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+
+    // Animasi Hero Section saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+      // Trigger animasi untuk elemen yang sudah ada
+      const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right');
+      
+      // Tambahkan efek scroll reveal untuk elemen lain
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe semua elemen yang perlu animasi
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+
+  <!-- Navigasi Tab Interaktif dan Konten Tab: HAPUS -->
+  <!-- Fitur-fitur -->
+  <section id="fitur" class="max-w-6xl mx-auto px-4 py-24 pt-24">
+    <div class="text-center mb-12">
+      <h2 class="section-title animate-fade-in-up">Fitur-fitur</h2>
+      <h3 class="text-3xl font-bold text-[#0B6E2F] mb-4 animate-fade-in-up delay-200">Berikut Ini Fitur-fitur Santren.Net</h3>
+      <p class="section-subtitle animate-fade-in-up delay-400">Santri.Net memiliki banyak fitur di antaranya</p>
+      <p class="text-sm text-gray-600 mt-4 max-w-3xl mx-auto animate-fade-in-up delay-600">
+        Kami menghubungkan semua sistem dalam satu hub yang kuat dan real time namun tidak membuat sistem terasa lambat.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Mobile Reporting -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-mobile-alt text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Mobile</h4>
+            <h3 class="font-bold text-lg">Reporting</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Wali Santri dapat memantau santri kapan saja dan di mana saja tanpa harus menunggu respon dari pesantren. Cukup dengan membuka aplikasi dan semua ada di situ.
+        </p>
+      </div>
+
+      <!-- Manajemen Santri -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up delay-200">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-users text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Manajemen</h4>
+            <h3 class="font-bold text-lg">Santri</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Pengelolaan santri yang ada di dalam pesantren dari daftar santri, aktifitas santri seperti seberapa perkembangan tahsin dan tahfidz quran serta tahfidz hadis santri.
+        </p>
+      </div>
+
+      <!-- Manajemen Pembayaran -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up delay-400">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-credit-card text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Manajemen</h4>
+            <h3 class="font-bold text-lg">Pembayaran</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Sistem membantu menerbitkan tagihan terjadwal sesuai dengan data santri dan juga menandai tagihan yang sudah dibayar dengan menginputkan tanggal pembayaran.
+        </p>
+      </div>
+
+      <!-- Manajemen Keuangan Santri -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up delay-600">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-wallet text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Manajemen</h4>
+            <h3 class="font-bold text-lg">Keuangan Santri</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Sistem membantu dalam mengelola uang titipan untuk santri dalam manajemen keuangan santri. Wali santri bisa memantau histori penggunaan dan juga saldo terkini.
+        </p>
+      </div>
+
+      <!-- Manajemen Penautan -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up delay-800">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-qrcode text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Manajemen</h4>
+            <h3 class="font-bold text-lg">Penautan</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Wali santri tidak perlu login untuk mengakses data santrinya, cukup hanya sekali melakukan penautan dengan memindai QR Code yang diperoleh dari pesantren.
+        </p>
+      </div>
+
+      <!-- Dashboard Keuangan -->
+      <div class="card flex flex-col items-start p-6 animate-fade-in-up delay-1000">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-chart-line text-3xl text-green-700 mr-3"></i>
+          <div>
+            <h4 class="font-semibold text-sm text-gray-500">Dashboard</h4>
+            <h3 class="font-bold text-lg">Keuangan</h3>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600">
+          Pengurus bisa memantau ringkasan kondisi keuangan pesantren di dalam dashboard selain tentu bisa membaca langsung dari menu laporan.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- END Fitur-fitur -->
+
+  <!-- Section Tentang Kami -->
+  <section id="tentang" class="bg-[#f8f9fa] py-24 pt-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <p class="uppercase text-[#0B6E2F] tracking-widest font-semibold text-base mb-2 animate-fade-in-up">Tentang Kami</p>
+        <h2 class="section-title animate-fade-in-up delay-200">Pelajari Lebih Dalam Tentang Santren.Net</h2>
+        <p class="section-subtitle animate-fade-in-up delay-400">
+          Santren.Net adalah platform digital terintegrasi untuk manajemen pesantren modern, memudahkan pengurus, santri, dan wali santri dalam satu sistem yang real-time, transparan, dan mudah diakses.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <!-- Platform Web Based Management -->
+        <div class="card flex flex-col items-center text-center p-8 hover:shadow-2xl transition animate-fade-in-up">
+          <div class="bg-[#E6F4EA] rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i class="fas fa-desktop text-3xl text-[#0B6E2F]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#0B6E2F] mb-2">Web Based Management</h3>
+          <p class="text-gray-700 text-base">Sistem utama yang digunakan oleh pesantren berbasis web, diakses oleh admin dan pengurus untuk mengelola seluruh data santri dan aktivitas pesantren.</p>
+        </div>
+        <!-- Platform Android Based Reporting -->
+        <div class="card flex flex-col items-center text-center p-8 hover:shadow-2xl transition animate-fade-in-up delay-200">
+          <div class="bg-[#E6F4EA] rounded-full w-16 h-16 flex items-center justify-center mb-4">
+            <i class="fas fa-mobile-alt text-3xl text-[#0B6E2F]"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#0B6E2F] mb-2">Android Based Reporting</h3>
+          <p class="text-gray-700 text-base">Aplikasi Android untuk wali santri, memantau perkembangan dan aktivitas santri secara real-time kapan saja dan di mana saja.</p>
+        </div>
+      </div>
+      <div class="mb-10">
+        <h4 class="section-title text-2xl mb-6 text-center animate-fade-in-up">Tangkapan Layar Aplikasi</h4>
+        <div class="relative">
+          <div class="swiper tangkapanSwiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+                <img src="keuangan.png" alt="Halaman Keuangan" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
+                <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Keuangan</span>
+              </div>
+              <!-- Slide 2 -->
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+                <img src="laptop.png" alt="Halaman Login" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
+                <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Login</span>
+              </div>
+              <!-- Slide 3 -->
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+                <img src="dashboard.png" alt="Dashboard" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
+                <span class="text-[#0B6E2F] font-semibold text-lg">Dashboard</span>
+              </div>
+              <!-- Slide 4 -->
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+                <img src="setup.png" alt="Halaman Setup" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
+                <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Setup</span>
+              </div>
+              <!-- Slide 5 -->
+
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+                <img src="penautan.png" alt="Halaman Penautan" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
+                <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Penautan</span>
+              </div>
+            </div>
+            <!-- Tombol Navigasi -->
+            <div class="swiper-button-next text-[#0B6E2F]"></div>
+            <div class="swiper-button-prev text-[#0B6E2F]"></div>
+          </div>
+        </div>
+        <!-- Jika ingin mengganti gambar dashboard.png, setup.png, pembayaran.png, penautan.png, silakan upload file dan ganti src-nya -->
+      </div>
+    </div>
+  </section>
+
+
+
+<section id="mitra" class="bg-[#f7f7f7] py-24 px-6 pt-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2">Mitra</h2>
+      <div class="text-lg text-gray-600">Berikut Ini <span class="font-bold text-[#0B6E2F]">Daftar Mitra Kami</span></div>
+    </div>
+    <div class="relative">
+      <div class="swiper mitraSwiper">
+        <div class="swiper-wrapper">
+                      <!-- Mitra 1 - Achmad Bahauddin -->
+            <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up">
+              <img src="achmad-bahauddin.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Achmad Bahauddin" />
+              <div class="flex-1">
+                <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Achmad Bahauddin, Ph.D</h4>
+                <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Serang Banten</span>
+                <p class="text-gray-600 text-sm mb-3">Achmad Bahauddin adalah seorang akademisi dan pakar di bidang Teknik Industri yang saat ini menjabat sebagai Ketua Jurusan Teknik Industri di Universitas Sultan Ageng Tirtayasa (Untirta).</p>
+                <a href="https://wa.me/6285132299400?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+            <!-- Mitra 2 - Baiq Naning Hasanah -->
+            <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-100">
+              <img src="nailul.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Baiq Naning Hasanah" />
+              <div class="flex-1">
+                <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Baiq Naning Hasanah</h4>
+                <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Nusa Tenggara Barat</span>
+                <p class="text-gray-600 text-sm mb-3">Ibu rumah tangga yang ingin membantu mengobati keresahan wali santri yang memiliki anak yang sedang belajar di pesantren terkait kecukupan logistik anaknya.</p>
+                <a href="https://wa.me/6285737848436?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+          <!-- Mitra 3 - Edi Winarko -->
+          <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-200">
+            <img src="Edi Winarko.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Edi Winarko" />
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Edi Winarko, M.Cs</h4>
+              <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Surabaya</span>
+              <p class="text-gray-600 text-sm mb-3">Dosen di Surabaya yang juga tidak ketinggalan untuk ikut berperan serta dalam pengembangan teknologi di dunia pesantren.</p>
+              <a href="https://wa.me/6285648188001?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+          <!-- Mitra 4 - Nailul Sholehah -->
+          <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-300">
+            <img src="nailul.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Nailul Sholehah" />
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Nailul Sholehah</h4>
+              <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Kalimantan Tengah</span>
+              <p class="text-gray-600 text-sm mb-3">Seorang bidan yang juga menjadi pemerhati pesantren berharap agar pesantren di Indonesia meningkat dalam sisi pelayanan terhadap para santri dan wali santrinya.</p>
+            </div>
+          </div>
+          <!-- Mitra 5 - Wahyadi -->
+          <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-400">
+            <img src="wahyadi.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Wahyadi" />
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Wahyadi</h4>
+              <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Bantul</span>
+              <p class="text-gray-600 text-sm mb-3">Alumnus Univesitas Gadjah Mada yang sudah berpengalaman di banyak bidang.</p>
+              <a href="https://wa.me/62817270699?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+          <!-- Mitra 6 - Zaenal Arifin -->
+          <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-500">
+            <img src="Zaenal.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Zaenal Arifin" />
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Zaenal Arifin</h4>
+              <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Semarang</span>
+              <p class="text-gray-600 text-sm mb-3">Berpengalaman dalam bidang manajemen pendidikan, penelitian, serta pemerhati sekolah dan pesantren di Jawa Tengah.</p>
+              <a href="https://wa.me/6285257536028?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+          <!-- Mitra 7 - Zaidir -->
+          <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-600">
+            <img src="Zaidir.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Zaidir" />
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Zaidir, M.Cs</h4>
+              <span class="text-sm text-[#22c55e] font-semibold mb-2 block">Mitra Yogyakarta</span>
+              <p class="text-gray-600 text-sm mb-3">Seorang dosen di sebuah perguruan tinggi di Jogja yang tidak hanya peduli dunia akademis di tingkat universitas namun di dunia pendidikan Islam khususnya pesantren.</p>
+              <a href="https://wa.me/6281328330538?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next text-[#0B6E2F]"></div>
+        <div class="swiper-button-prev text-[#0B6E2F]"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Inisialisasi Swiper untuk mitra
+  var mitraSwiper = new Swiper('.mitraSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 32,
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.mitraSwiper .swiper-button-next',
+      prevEl: '.mitraSwiper .swiper-button-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      }
+    }
+  });
+</script>
+
+<section class="bg-[#f7f8fa] py-24">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2">Ada Pertanyaan?</h2>
+      <p class="text-lg text-gray-600">Silakan cek apakah pertanyaan Anda sudah tercakup di daftar pertanyaan berikut ini.</p>
+    </div>
+    <div class="flex flex-col md:flex-row gap-12 items-start">
+      <!-- Ilustrasi panah -->
+      <div class="hidden md:flex flex-col items-center justify-center w-1/4">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 30 Q60 60 90 30 Q60 90 30 90" stroke="#22c55e" stroke-width="4" fill="none"/>
+          <path d="M90 30 L85 40 L95 40 Z" fill="#22c55e"/>
+        </svg>
+      </div>
+      <!-- FAQ Accordion -->
+      <div class="flex-1 space-y-6">
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
+            <span>Kami ingin membuat sistem sendiri. Apakah bisa membantu mengembangkan?</span>
+            <svg class="faq-arrow w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="#0B6E2F" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-5 text-gray-600 text-sm hidden">
+            Kami siap membantu mengembangkan sistem yang Anda butuhkan. Domain, server dan tim maintenance menjadi tanggung jawab pihak pesantren setelah sistem diserah terimakan.
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up delay-200">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
+            <span>Berapa biayanya?</span>
+            <svg class="faq-arrow w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="#0B6E2F" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-5 text-gray-600 text-sm hidden">
+            Kami menerapkan SAAS dalam produk ini sehingga pembayarannya dilakukan rutin setiap bulan. Kami akan menghitung tagihan kepada pesantren setiap bulan. Nilai pembayarannya sesuai dengan jumlah santri yang aktif. Harga standar kami selama bulan adalah Rp. 1.000 x jumlah santri aktif. Untuk harga khusus, silahkan hubungi dengan Mitra kami langsung, Anda berpeluang mendapatkan harga spesial.
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up delay-400">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
+            <span>Perlukah kami menyiapkan domain dan server?</span>
+            <svg class="faq-arrow w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="#0B6E2F" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-5 text-gray-600 text-sm hidden">
+            Anda tidak perlu menyiapkan domain dan server. Anda cukup menentukan domain saja dan sampaikan kepada mitra kami, dan nanti tinggal integrasikan sistem dengan alamat sesuai dengan domain yang Anda tentukan di bawah sistem tersebut.
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up delay-600">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
+            <span>Bisakah kami dibuatkan aplikasi Android terpisah?</span>
+            <svg class="faq-arrow w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="#0B6E2F" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-5 text-gray-600 text-sm hidden">
+            Kami bisa membuatkan aplikasi Android spesial untuk pesantren Anda. Lebih detil bisa menghubungi mitra kami.
+          </div>
+        </div>
+        <!-- FAQ 5 -->
+        <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up delay-800">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
+            <span>Apakah benar lima menit langsung aktif?</span>
+            <svg class="faq-arrow w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="#0B6E2F" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer px-6 pb-5 text-gray-600 text-sm hidden">
+            Jika Anda menggunakan layanan standard kami maka proses yang kami lakukan kurang dari lima menit sudah aktif dan telah menerima informasi setup layanan awal. Namun jika dibutuhkan layanan tambahan seperti misal Anda ingin server sendiri / dipisahkan dengan filen lain yang lain maka kami butuh waktu dua hari hingga satu pekan untuk menyiapkannya. Jika Anda menginginkan dibuatkan aplikasi Android sendiri, maka untuk Androidnya butuh satu hingga dua bulan.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const answer = btn.nextElementSibling;
+      const arrow = btn.querySelector('.faq-arrow');
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        arrow.style.transform = 'rotate(180deg)';
+      } else {
+        answer.classList.add('hidden');
+        answer.style.maxHeight = null;
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    });
+  });
+</script>
+
+
+  <!-- Footer -->
+  <footer class="bg-[#0B6E2F] text-white pt-12 pb-4 px-4 mt-16">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Logo & Deskripsi -->
+      <div>
+        <div class="text-2xl font-extrabold mb-2">Santren.Net</div>
+        <p class="text-sm text-gray-200 leading-relaxed">Selalu siap melayani dengan penuh senyum dan bahagia. Kesuksesan pesantren adalah kesuksesan kami juga.</p>
+      </div>
+      <!-- Tautan Penting -->
+      <div>
+        <div class="font-bold mb-2 text-lg">Tautan Penting</div>
+        <ul class="space-y-1 text-gray-200 text-sm">
+          <li><a href="#" class="hover:underline">Kembali Ke Beranda</a></li>
+          <li><a href="#tentang" class="hover:underline">Tentang Kami</a></li>
+          <li><a href="#layanan" class="hover:underline">Layanan</a></li>
+        </ul>
+      </div>
+      <!-- Tautan Demo -->
+      <div>
+        <div class="font-bold mb-2 text-lg">Tautan Demo</div>
+        <ul class="space-y-1 text-gray-200 text-sm">
+          <li><a href="https://santren.gatechno.com" target="_blank" class="hover:underline">santren.gatechno.com</a></li>
+          <li><a href="https://demo.santren.net" target="_blank" class="hover:underline">demo.santren.net</a></li>
+        </ul>
+      </div>
+      <!-- Kontak -->
+      <div>
+        <div class="font-bold mb-2 text-lg">Hubungi Kami</div>
+        <ul class="text-gray-200 text-sm space-y-1">
+          <li>Jl Kincon 557A</li>
+          <li>Umbulharjo, YK 55162</li>
+          <li>Email: <a href="mailto:info@santren.net" class="hover:underline">info@santren.net</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-[#14532d] mt-8 pt-4 text-center text-xs text-gray-200">
+      &copy; Copyright <span class="font-bold">Santren.Net</span>. All Rights Reserved
+    </div>
+  </footer>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+
+    // Swiper untuk tangkapan layar aplikasi
+    var tangkapanSwiper = new Swiper('.tangkapanSwiper', {
+      slidesPerView: 2,
+      spaceBetween: 32,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+      },
+      navigation: {
+        nextEl: '.tangkapanSwiper .swiper-button-next',
+        prevEl: '.tangkapanSwiper .swiper-button-prev',
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        }
+      }
+    });
+
+    // Animasi Hero Section saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+      // Trigger animasi untuk elemen yang sudah ada
+      const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right');
+      
+      // Tambahkan efek scroll reveal untuk elemen lain
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe semua elemen yang perlu animasi
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+</html>
