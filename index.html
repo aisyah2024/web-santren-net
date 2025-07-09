@@ -35,7 +35,7 @@
       transparent 10px
     );
   }
-
+  
   /* Animasi Hero Section */
   @keyframes fadeInUp {
     from {
@@ -365,6 +365,7 @@
       <li><a href="#fitur" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Fitur</a></li>
       <li><a href="#tentang" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Tentang Kami</a></li>
       <li><a href="#mitra" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Mitra</a></li>
+      <li><a href="#bergabung" class="hover:text-[#E6F4EA] hover:underline transition duration-300">Cara Bergabung</a></li>
     </ul>
     <!-- Tombol Demo selalu tampil -->
     <a href="https://demo.santren.net" target="_blank" class="cta-btn pulse-glow bg-[#0B6E2F] text-white px-6 py-2 rounded-lg font-bold shadow-md hover:bg-[#22c55e] hover:text-white transition duration-300 ml-2">Demo</a>
@@ -380,6 +381,7 @@
       <li><a href="#fitur" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Fitur</a></li>
       <li><a href="#tentang" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Tentang Kami</a></li>
       <li><a href="#mitra" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Mitra</a></li>
+      <li><a href="#bergabung" class="hover:text-[#E6F4EA] hover:underline transition duration-300" onclick="closeMobileMenu()">Cara Bergabung</a></li>
     </ul>
   </div>
   <script>
@@ -405,7 +407,7 @@
       
       <!-- Konten Kiri -->
       <div class="flex-1 text-left space-y-4">
-        <p class="text-gray-500 text-sm animate-fade-in-up delay-200">
+        <p class="text-gray-500 text-sm">
           Biaya normal:
           <span class="line-through text-red-600 font-semibold">Rp. 5.000.000</span>
         </p>
@@ -415,10 +417,10 @@
         <h1 class="text-5xl md:text-6xl font-extrabold text-[#0B6E2F] pulse">
           Hanya Rp. 100.000
         </h1>
-        <p class="text-lg text-gray-700 animate-fade-in-up delay-800">
+        <p class="text-lg text-gray-700">
           Dapatkan website pesantren profesional hanya dengan biaya terjangkau. Naikan brand pesantren Anda dengan menggunakan layanan dari Santren.Net yang berkualitas. Pesantren Anda akan dilihat sebagai pesantren masa depan yang tidak ketinggalan jaman karena selalu memperbarui teknologi dalam pelayanannya.
         </p>
-        <p class="text-sm text-gray-600 animate-fade-in-up delay-1000">
+        <p class="text-sm text-gray-600">
           Berlaku untuk 10 pendaftar pertama bulan ini.
         </p>
         <a href="#fitur" class="btn-shimmer-glow inline-flex items-center px-6 py-3 text-sm font-semibold hover:opacity-90 transition">
@@ -517,12 +519,12 @@
       });
     });
   </script>
-
+  
 
   <!-- Navigasi Tab Interaktif dan Konten Tab: HAPUS -->
   <!-- Fitur-fitur -->
-  <section id="fitur" class="max-w-6xl mx-auto px-4 py-24 pt-24">
-    <div class="text-center mb-12">
+  <section id="fitur" class="max-w-6xl mx-auto px-4 py-24 pt-24 animate-fade-in-up">
+    <div class="text-center mb-12 animate-fade-in-up">
       <h2 class="section-title animate-fade-in-up">Fitur-fitur</h2>
       <h3 class="text-3xl font-bold text-[#0B6E2F] mb-4 animate-fade-in-up delay-200">Berikut Ini Fitur-fitur Santren.Net</h3>
       <p class="section-subtitle animate-fade-in-up delay-400">Santri.Net memiliki banyak fitur di antaranya</p>
@@ -620,9 +622,9 @@
   <!-- END Fitur-fitur -->
 
   <!-- Section Tentang Kami -->
-  <section id="tentang" class="bg-[#f8f9fa] py-24 pt-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-12">
+  <section id="tentang" class="bg-[#f8f9fa] py-24 pt-24 animate-fade-in-up">
+    <div class="max-w-6xl mx-auto px-4 animate-fade-in-up">
+      <div class="text-center mb-12 animate-fade-in-up">
         <p class="uppercase text-[#0B6E2F] tracking-widest font-semibold text-base mb-2 animate-fade-in-up">Tentang Kami</p>
         <h2 class="section-title animate-fade-in-up delay-200">Pelajari Lebih Dalam Tentang Santren.Net</h2>
         <p class="section-subtitle animate-fade-in-up delay-400">
@@ -642,14 +644,14 @@
         <div class="card flex flex-col items-center text-center p-8 hover:shadow-2xl transition animate-fade-in-up delay-200">
           <div class="bg-[#E6F4EA] rounded-full w-16 h-16 flex items-center justify-center mb-4">
             <i class="fas fa-mobile-alt text-3xl text-[#0B6E2F]"></i>
-          </div>
+    </div>
           <h3 class="text-2xl font-bold text-[#0B6E2F] mb-2">Android Based Reporting</h3>
           <p class="text-gray-700 text-base">Aplikasi Android untuk wali santri, memantau perkembangan dan aktivitas santri secara real-time kapan saja dan di mana saja.</p>
-        </div>
+  </div>
       </div>
-      <div class="mb-10">
+      <div class="mb-10 animate-fade-in-up delay-400">
         <h4 class="section-title text-2xl mb-6 text-center animate-fade-in-up">Tangkapan Layar Aplikasi</h4>
-        <div class="relative">
+        <div class="relative animate-fade-in-up delay-200">
           <div class="swiper tangkapanSwiper">
             <div class="swiper-wrapper">
               <!-- Slide 1 -->
@@ -658,23 +660,23 @@
                 <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Keuangan</span>
               </div>
               <!-- Slide 2 -->
-              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up delay-200">
                 <img src="laptop.png" alt="Halaman Login" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
                 <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Login</span>
               </div>
               <!-- Slide 3 -->
-              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up delay-400">
                 <img src="dashboard.png" alt="Dashboard" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
                 <span class="text-[#0B6E2F] font-semibold text-lg">Dashboard</span>
               </div>
               <!-- Slide 4 -->
-              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up delay-600">
                 <img src="setup.png" alt="Halaman Setup" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
                 <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Setup</span>
               </div>
               <!-- Slide 5 -->
 
-              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up">
+              <div class="swiper-slide card flex flex-col items-center animate-fade-in-up delay-800">
                 <img src="penautan.png" alt="Halaman Penautan" class="img-shadow w-full object-contain mb-3" style="max-height:220px;" />
                 <span class="text-[#0B6E2F] font-semibold text-lg">Halaman Penautan</span>
               </div>
@@ -691,13 +693,13 @@
 
 
 
-<section id="mitra" class="bg-[#f7f7f7] py-24 px-6 pt-24">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2">Mitra</h2>
-      <div class="text-lg text-gray-600">Berikut Ini <span class="font-bold text-[#0B6E2F]">Daftar Mitra Kami</span></div>
+<section id="mitra" class="bg-[#f7f7f7] py-24 px-6 pt-24 animate-fade-in-up">
+  <div class="max-w-6xl mx-auto animate-fade-in-up">
+    <div class="text-center mb-12 animate-fade-in-up">
+      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2 animate-fade-in-up">Mitra</h2>
+      <div class="text-lg text-gray-600 animate-fade-in-up">Berikut Ini <span class="font-bold text-[#0B6E2F]">Daftar Mitra Kami</span></div>
     </div>
-    <div class="relative">
+    <div class="relative animate-fade-in-up delay-200">
       <div class="swiper mitraSwiper">
         <div class="swiper-wrapper">
                       <!-- Mitra 1 - Achmad Bahauddin -->
@@ -713,7 +715,7 @@
               </div>
             </div>
             <!-- Mitra 2 - Baiq Naning Hasanah -->
-            <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-100">
+            <div class="swiper-slide mitra-card flex bg-white rounded-2xl shadow-lg p-6 items-center gap-6 hover:scale-105 transition animate-fade-in-up delay-200">
               <img src="nailul.jpg" class="w-28 h-28 rounded-full object-cover shadow" alt="Baiq Naning Hasanah" />
               <div class="flex-1">
                 <h4 class="text-xl font-bold text-[#0B6E2F] mb-1">Baiq Naning Hasanah</h4>
@@ -779,7 +781,7 @@
               <a href="https://wa.me/6281328330538?text=Assalaamualaikum%20kami%20tertarik%20untuk%20mengetahui%20lebih%20mendalam%20tentang%20Santren.Net" target="_blank" class="inline-flex items-center gap-2 bg-[#22c55e] text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-[#0B6E2F] transition">
                 <i class="fab fa-whatsapp"></i> WhatsApp
               </a>
-            </div>
+          </div>
           </div>
         </div>
         <div class="swiper-button-next text-[#0B6E2F]"></div>
@@ -811,22 +813,22 @@
   });
 </script>
 
-<section class="bg-[#f7f8fa] py-24">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2">Ada Pertanyaan?</h2>
-      <p class="text-lg text-gray-600">Silakan cek apakah pertanyaan Anda sudah tercakup di daftar pertanyaan berikut ini.</p>
+<section class="bg-[#f7f8fa] py-24 animate-fade-in-up">
+  <div class="max-w-6xl mx-auto px-4 animate-fade-in-up">
+    <div class="text-center mb-12 animate-fade-in-up">
+      <h2 class="text-4xl font-extrabold text-[#0B6E2F] mb-2 animate-fade-in-up">Ada Pertanyaan?</h2>
+      <p class="text-lg text-gray-600 animate-fade-in-up">Silakan cek apakah pertanyaan Anda sudah tercakup di daftar pertanyaan berikut ini.</p>
     </div>
-    <div class="flex flex-col md:flex-row gap-12 items-start">
+    <div class="flex flex-col md:flex-row gap-12 items-start animate-fade-in-up delay-200">
       <!-- Ilustrasi panah -->
-      <div class="hidden md:flex flex-col items-center justify-center w-1/4">
+      <div class="hidden md:flex flex-col items-center justify-center w-1/4 animate-fade-in-up">
         <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M30 30 Q60 60 90 30 Q60 90 30 90" stroke="#22c55e" stroke-width="4" fill="none"/>
           <path d="M90 30 L85 40 L95 40 Z" fill="#22c55e"/>
         </svg>
       </div>
       <!-- FAQ Accordion -->
-      <div class="flex-1 space-y-6">
+      <div class="flex-1 space-y-6 animate-fade-in-up delay-400">
         <!-- FAQ 1 -->
         <div class="bg-white rounded-2xl shadow-lg p-0 overflow-hidden animate-fade-in-up">
           <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-[#0B6E2F] text-base focus:outline-none faq-toggle transition hover:bg-[#e6f4ea]">
@@ -900,10 +902,84 @@
   });
 </script>
 
+<section id="bergabung" class="bg-[#0B6E2F] bg-opacity-95 py-24 px-4 animate-fade-in-up">
+  <div class="max-w-4xl mx-auto animate-fade-in-up">
+    <div class="mb-12 text-center animate-fade-in-up">
+      <p class="uppercase text-[#22c55e] tracking-widest font-semibold text-base mb-2 animate-fade-in-up">Langkah-langkah</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 animate-fade-in-up">Bagaimana untuk Bergabung</h2>
+    </div>
+    <div class="relative animate-fade-in-up delay-200">
+      <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-[#14532d] opacity-40 hidden md:block" style="transform: translateX(-50%);"></div>
+      <div class="space-y-12 animate-fade-in-up delay-400">
+        <!-- Step 1 -->
+        <div class="flex flex-col md:flex-row items-center md:items-stretch">
+          <div class="hidden md:flex flex-col items-center w-1/5 justify-center">
+            <div class="bg-[#22c55e] rounded-full w-14 h-14 flex items-center justify-center mb-2">
+              <i class="fas fa-globe text-2xl text-white"></i>
+            </div>
+          </div>
+          <div class="md:w-4/5 w-full">
+            <div class="bg-[#14532d] rounded-2xl shadow-lg p-8 text-white mb-4 md:mb-0">
+              <div class="text-[#22c55e] font-bold text-xs mb-1">STEP 01</div>
+              <div class="font-bold text-lg mb-2">Tentukan domain</div>
+              <div class="text-sm text-gray-200">Pengguna Santren.Net perlu menentukan domain yang berada di bawah santren.net. Misalkan Anda tentukan dengan nama <b>domainanda</b> sehingga nanti alamat website manajemen Anda adalah <b>domainanda.santren.net</b>.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col md:flex-row items-center md:items-stretch flex-row-reverse">
+          <div class="hidden md:flex flex-col items-center w-1/5 justify-center">
+            <div class="bg-[#22c55e] rounded-full w-14 h-14 flex items-center justify-center mb-2">
+              <i class="fas fa-phone text-2xl text-white"></i>
+            </div>
+          </div>
+          <div class="md:w-4/5 w-full">
+            <div class="bg-[#14532d] rounded-2xl shadow-lg p-8 text-white mb-4 md:mb-0">
+              <div class="text-[#22c55e] font-bold text-xs mb-1">STEP 02</div>
+              <div class="font-bold text-lg mb-2">Hubungi Mitra Santren.Net</div>
+              <div class="text-sm text-gray-200">Segera hubungi mitra Santren.Net terdekat Anda atau yang sudah menghubungi Anda untuk menindaklanjuti. Setelah terjadi kesepakatan Anda akan menerima invoice dari kami.</div>
+        </div>
+      </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col md:flex-row items-center md:items-stretch">
+          <div class="hidden md:flex flex-col items-center w-1/5 justify-center">
+            <div class="bg-[#22c55e] rounded-full w-14 h-14 flex items-center justify-center mb-2">
+              <i class="fas fa-money-bill-wave text-2xl text-white"></i>
+            </div>
+          </div>
+          <div class="md:w-4/5 w-full">
+            <div class="bg-[#14532d] rounded-2xl shadow-lg p-8 text-white mb-4 md:mb-0">
+              <div class="text-[#22c55e] font-bold text-xs mb-1">STEP 03</div>
+              <div class="font-bold text-lg mb-2">Pembayaran Awal</div>
+              <div class="text-sm text-gray-200">Anda melakukan pembayaran awal sesuai dengan invoice yang diberikan oleh Mitra. Pembayaran langsung transfer ke rekening kami. Anda bisa kirimkan bukti pembayaran melalui Mitra.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="flex flex-col md:flex-row items-center md:items-stretch flex-row-reverse">
+          <div class="hidden md:flex flex-col items-center w-1/5 justify-center">
+            <div class="bg-[#22c55e] rounded-full w-14 h-14 flex items-center justify-center mb-2">
+              <i class="fas fa-rocket text-2xl text-white"></i>
+            </div>
+          </div>
+          <div class="md:w-4/5 w-full">
+            <div class="bg-[#14532d] rounded-2xl shadow-lg p-8 text-white mb-4 md:mb-0">
+              <div class="text-[#22c55e] font-bold text-xs mb-1">STEP 04</div>
+              <div class="font-bold text-lg mb-2">Launch & Support</div>
+              <div class="text-sm text-gray-200">Website Anda aktif dan bisa digunakan. Mitra kami akan selalu mensuport terkait penggunaan sistem pesantren.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Footer -->
-  <footer class="bg-[#0B6E2F] text-white pt-12 pb-4 px-4 mt-16">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+  <footer class="bg-[#0B6E2F] text-white pt-12 pb-4 px-4 mt-16 animate-fade-in-up">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 animate-fade-in-up delay-200">
       <!-- Logo & Deskripsi -->
       <div>
         <div class="text-2xl font-extrabold mb-2">Santren.Net</div>
@@ -936,7 +1012,7 @@
         </ul>
       </div>
     </div>
-    <div class="border-t border-[#14532d] mt-8 pt-4 text-center text-xs text-gray-200">
+    <div class="border-t border-[#14532d] mt-8 pt-4 text-center text-xs text-gray-200 animate-fade-in-up delay-400">
       &copy; Copyright <span class="font-bold">Santren.Net</span>. All Rights Reserved
     </div>
   </footer>
